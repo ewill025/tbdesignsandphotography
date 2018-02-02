@@ -1,7 +1,43 @@
+import { request } from 'https';
+
 var express = require('express');
 var app = express();
 var router = express.Router();
 var path = require('path');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+var bodyParser = require('body-parser');
+
+app.post('/contact', function (req, res) {
+  
+  //Setup Nodemailer transport
+  let transporter = nodemailer.createTransport( {
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+      auth: {
+          user: "ewill025@gmail.com",
+          pass: "9122272856" 
+      }
+  });
+  //Mail options
+  let mailOpts = {
+      from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
+      to: 'ewill025@gmail.com',
+      subject: 'New Message From' + req.body.name,
+      text: req.body.message 
+  };
+  transporter.sendMail(mailOpts, function (error, response) {
+      //Email not sent
+      if (error) {
+          res.render('contact', { msg: 'Error occured, message not sent.', err: true, page: 'contact' })
+      }
+      // Email sent
+      else {
+          res.render('contact', { msg: 'Message sent! Thank you.', err: false, page: 'contact' })
+      }
+  });
+});
   
 
 app.use(express.static(path.join(__dirname, '/public')));
