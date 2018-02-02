@@ -1,0 +1,23 @@
+{
+  "name": "tbdesign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test",
+    "start":"node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewill025/tbdesign.git"
+  },
+  "author": "Eric Williams, Jr.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ewill025/tbdesign/issues"
+  },
+  "homepage": "https://github.com/ewill025/tbdesign#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
