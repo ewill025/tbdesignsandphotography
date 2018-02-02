@@ -1,31 +1,40 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
+var path = require('path');
   
-var path = __dirname + '/views/';
+
+//app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(__dirname + '/views'));
+//Store all HTML files in view folder.
+app.use(express.static(__dirname + '/Script'));
+//Store all JS and CSS in Scripts folder.
+
   
 app.use('/',router);
   
 router.get('/',function(req, res){
-  res.sendFile(path + 'index.html');
+  res.sendFile('/index.html');
 });
   
 router.get('/about',function(req, res){
-  res.sendFile(path + 'about.html');});
+  res.sendFile('/about.html');
+});
   
 router.get('/design',function(req, res){
-  res.sendFile(path + 'design.html');
+ res.sendFile('design.html');
 });
 
 router.get('/drawing',function(req, res){
-    res.sendFile(path + 'drawing.html');
+    res.sendFile('drawing.html');
   });
     
   router.get('/photography',function(req, res){
-    res.sendFile(path + 'photography.html');});
+    res.sendFile('photography.html');
+  });
     
   router.get('/contact',function(req, res){
-    res.sendFile(path + 'contact.html');
+    res.sendFile('contact.html');
   });
   
 app.use('*',function(req, res){
