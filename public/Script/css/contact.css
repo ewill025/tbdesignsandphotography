@@ -1,0 +1,62 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(/Script/fonts/myfont.ttf);
+}
+footer{
+    text-align: center;
+    color: white;
+}
+li{
+    color: black;
+}
+h1{
+    font-family: myFirstFont;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+}
+.fa-facebook {
+    color:white;
+}
+.fa-instagram{
+    color: white;
+}
+body,.navbar-custom{
+    background-color: gray;
+}
+.jumbotron{
+    background-color: gray;
+    position: relative;
+}
+.btn-secondary{
+    display: inline-block;
+    width: 150px;
+    padding-top: 9.6px;
+    padding-bottom: 9.6px;
+    border-radius: 0;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(255, 255, 255);
+    transition: background-color ease-in 0.3s, color ease-in 0.3s, font-family ease-in 0.3s;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #000;
+    text-transform: uppercase;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+label{
+    color: white;
+}
+legend{
+    color: white;
+}
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }

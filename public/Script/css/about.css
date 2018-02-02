@@ -1,0 +1,39 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(/Script/fonts/myfont.ttf);
+}
+footer{
+    text-align: center;
+    color: white;
+}
+li{
+    color: black;
+}
+h1{
+    font-family: myFirstFont;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+}
+.fa-facebook {
+    color:white;
+}
+.fa-instagram{
+    color: white;
+}
+body,.navbar-custom{
+    background-color: gray;
+}
+.img-responsive{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+.jumbotron{
+    background-color: gray;
+    position: relative;
+}
+p{
+    color: white;
+}
