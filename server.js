@@ -1,8 +1,37 @@
 var express = require('express');
 var app = express();
-app.get('/', function (req, res) {
-res.send('<h1>Open Source For You!</h1>');
+var router = express.Router();
+  
+var path = __dirname + '/views/';
+  
+app.use('/',router);
+  
+router.get('/',function(req, res){
+  res.sendFile(path + 'index.html');
 });
-app.listen(3000, function () {
-console.log('App listening on port 3000!');
+  
+router.get('/about',function(req, res){
+  res.sendFile(path + 'about.html');});
+  
+router.get('/design',function(req, res){
+  res.sendFile(path + 'design.html');
+});
+
+router.get('/drawing',function(req, res){
+    res.sendFile(path + 'drawing.html');
+  });
+    
+  router.get('/photography',function(req, res){
+    res.sendFile(path + 'photography.html');});
+    
+  router.get('/contact',function(req, res){
+    res.sendFile(path + 'contact.html');
+  });
+  
+app.use('*',function(req, res){
+  res.send('Error 404: Not Found!');
+});
+  
+app.listen(3000,function(){
+  console.log('Server running at Port 3000');
 });

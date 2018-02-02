@@ -1,0 +1,36 @@
+.btn-light{
+    text-align: center;
+}
+.img-fluid{
+    box-shadow:2px 2px 20px rgb(255, 255, 255); 
+    border:none; 
+    margin-bottom:30px;
+    height: 200px;
+}
+.btn-secondary{
+    display: inline-block;
+    width: 150px;
+    padding-top: 9.6px;
+    padding-bottom: 9.6px;
+    border-radius: 0;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(255, 255, 255);
+    transition: background-color ease-in 0.3s, color ease-in 0.3s, font-family ease-in 0.3s;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #000;
+    text-transform: uppercase;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #000;
+}
+.card{
+    height: 250px;
+}
+body{
+    background-color: gray;
+}
