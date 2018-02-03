@@ -30,11 +30,11 @@ app.post('/send-email', function (req, res) {
   smtpTrans.sendMail(mailOpts, function (error, response) {
       //Email not sent
       if (error) {
-        return console.log(error,'Message was not sent')
+        res.redirect('/error')
       }
       // Email sent
       else {
-          res.render('/contact')
+      res.redirect('/sent')
       }
   });
 });
@@ -79,6 +79,10 @@ router.get('/drawing',function(req, res){
 
   router.get('/sent',function(req, res){
     res.sendFile(path.join(__dirname+'/sent.html'));
+  });
+
+  router.get('/error',function(req, res){
+    res.sendFile(path.join(__dirname+'/error.html'));
   });
   
 app.use('*',function(req, res){
