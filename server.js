@@ -1,40 +1,40 @@
-import { request } from 'https';
+const express = require('express');
+const app = express();
+const router = express.Router();
+const path = require('path');
+const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
+const bodyParser = require('body-parser');
 
-var express = require('express');
-var app = express();
-var router = express.Router();
-var path = require('path');
-var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
-var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+app.post('/send-email', function (req, res) {
 
-app.post('/contact', function (req, res) {
-  
+  let mailOpts, smtpTrans;
   //Setup Nodemailer transport
-  let transporter = nodemailer.createTransport( {
+  smtpTrans = nodemailer.createTransport( {
     host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
       auth: {
           user: "ewill025@gmail.com",
           pass: "9122272856" 
       }
   });
   //Mail options
-  let mailOpts = {
+   mailOpts = {
       from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
-      to: 'ewill025@gmail.com',
-      subject: 'New Message From' + req.body.name,
-      text: req.body.message 
+      to: 'ericwilliamsjr@live.com',
+      subject: 'You Have A New Message!',
+      text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
   };
-  transporter.sendMail(mailOpts, function (error, response) {
+  smtpTrans.sendMail(mailOpts, function (error, response) {
       //Email not sent
       if (error) {
-          res.render('contact', { msg: 'Error occured, message not sent.', err: true, page: 'contact' })
+        return console.log(error,'Message was not sent')
       }
       // Email sent
       else {
-          res.render('contact', { msg: 'Message sent! Thank you.', err: false, page: 'contact' })
+          res.render('/contact')
       }
   });
 });
@@ -75,6 +75,10 @@ router.get('/drawing',function(req, res){
     
   router.get('/contact',function(req, res){
     res.sendFile(path.join(__dirname+'/contact.html'));
+  });
+
+  router.get('/sent',function(req, res){
+    res.sendFile(path.join(__dirname+'/sent.html'));
   });
   
 app.use('*',function(req, res){
