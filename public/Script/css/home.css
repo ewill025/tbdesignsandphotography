@@ -15,14 +15,9 @@ h1{
     color: white;
     text-align: center;
 }
-.fa-facebook {
-    color:white;
-}
-.fa-instagram{
+.fa-instagram,.fa-facebook,.fa-youtube{
     color: white;
 }
-
-
 .btn-light{
     text-align: center;
 }
