@@ -5,39 +5,58 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const bodyParser = require('body-parser');
+const validator = require('express-validator');
+const { body,validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.post('/send-email', function (req, res) {
+app.use(validator());
 
-  let mailOpts, smtpTrans;
-  //Setup Nodemailer transport
-  smtpTrans = nodemailer.createTransport( {
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-      auth: {
-          user: "ewill025@gmail.com",
-          pass: "9122272856" 
-      }
-  });
-  //Mail options
-   mailOpts = {
-      from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
-      to: 'ericwilliamsjr@live.com',
-      subject: 'You Have A New Message!',
-      text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
-  };
-  smtpTrans.sendMail(mailOpts, function (error, response) {
-      //Email not sent
-      if (error) {
-        res.redirect('/error')
-      }
-      // Email sent
-      else {
-      res.redirect('/sent')
-      }
-  });
+
+app.post('/send-email', function (req, res) {
+  //validates contact form
+  req.checkBody('name', "Name is required.").notEmpty();
+  req.checkBody('email', "Enter a valid email address.").notEmpty().isEmail();
+  req.checkBody('message', "Enter a message.").notEmpty();
+ const errors = req.validationErrors();
+  if (errors) {
+    res.send(errors);
+    return;
+  } else {
+    let mailOpts, smtpTrans;
+    //Setup Nodemailer transport
+    smtpTrans = nodemailer.createTransport( {
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+        auth: {
+            user: "ewill025@gmail.com",
+            pass: "9122272856" 
+        }
+    });
+    //Mail options
+     mailOpts = {
+        from: req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
+        to: 'ericwilliamsjr@live.com',
+        subject: 'You Have A New Message!',
+        text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+    };
+    smtpTrans.sendMail(mailOpts, function (error, response) {
+        //Email not sent
+        if (error) {
+          res.redirect('/error')
+        }
+        // Email sent
+        else {
+        res.redirect('/sent')
+        }
+    });
+  
+  }
 });
+
+
+  
   
 
 app.use(express.static(path.join(__dirname, '/public')));
