@@ -80,7 +80,7 @@ router.get('/about',function(req, res){
   res.sendFile(path.join(__dirname+'/about.html'));
 });
   
-router.get('/design',function(req, res){
+router.get('/graphic_designs',function(req, res){
  res.sendFile(path.join(__dirname+'/design.html'));
 });
 

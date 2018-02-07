@@ -1,0 +1,39 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(/Script/fonts/myfont.ttf);
+}
+body{
+    height: 100%;
+    background:linear-gradient(to bottom, rgb(94, 92, 92),black);
+}
+footer{
+    text-align: center;
+    color: white;
+}
+li{
+    color: black;
+}
+h1{
+    font-family: myFirstFont;
+    font-size: 100px;
+    color: white;
+    text-align: center;
+    text-shadow: 3px 3px rgb(51, 51, 51);
+}
+.fa-instagram,.fa-facebook,.fa-youtube{
+    color: white;
+}
+.img-fluid{
+    box-shadow:2px 2px 20px rgb(255, 255, 255); 
+    border:none; 
+    margin-bottom:30px;
+    height: 293px;
+    width: 293px;
+  
+}
+
+.card{
+    height: 293px;
+    width: 293px;
+}
+
