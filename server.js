@@ -103,6 +103,10 @@ router.get('/drawing',function(req, res){
   router.get('/error',function(req, res){
     res.sendFile(path.join(__dirname+'/error.html'));
   });
+
+  router.get('/videos',function(req, res){
+    res.sendFile(path.join(__dirname+'/videos.html'));
+  });
   
 app.use('*',function(req, res){
   res.send('Error 404: Not Found!');

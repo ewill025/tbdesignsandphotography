@@ -14,7 +14,7 @@ h1{
     font-size: 100px;
     color: white;
     text-align: center;
-    text-shadow: 3px 3px rgb(51, 51, 51);
+    text-shadow: 3px 3px rgb(100, 100, 100);
 }
 .fa-instagram,.fa-facebook,.fa-youtube{
     color: white;
@@ -54,7 +54,7 @@ h1{
 }
 body{
     height: 100%;
-    background:linear-gradient(to bottom, rgb(94, 92, 92),black);
+    background:linear-gradient(to bottom, lightgray,rgb(110, 110, 110));
 }
 
 .img-responsive{

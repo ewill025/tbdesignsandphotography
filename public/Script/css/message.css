@@ -4,9 +4,8 @@
 }
 body,html{
     height: 100%;
-    background:linear-gradient(to bottom, rgb(94, 92, 92),black);}
+    background:linear-gradient(to bottom, rgb(139, 137, 137),black);
 }
-
 h1{
     font-family: myFirstFont;
     font-size: 100px;
