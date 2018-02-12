@@ -63,6 +63,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 //app.use(express.static(__dirname + '/views'));
 //Store all HTML files in view folder.
 app.use(express.static(__dirname + '/Script'));
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/fonts'));
+app.use(express.static(__dirname + '/images'));
 //Store all JS and CSS in Scripts folder.
 
   
@@ -72,7 +75,7 @@ router.get('/',function(req, res){
   res.sendFile(path.join(__dirname+'/index.html'));
 });
   
-router.get('/home',function(req, res){
+app.get('/home',function(req, res){
   res.sendFile(path.join(__dirname+'/home.html'));
 });
   
