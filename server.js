@@ -75,7 +75,7 @@ router.get('/',function(req, res){
   res.sendFile(path.join(__dirname+'/index.html'));
 });
   
-app.get('/home',function(req, res){
+router.get('/home',function(req, res){
   res.sendFile(path.join(__dirname+'/home.html'));
 });
   
